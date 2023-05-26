@@ -1,5 +1,4 @@
 <!--
-title: Journey of Automation - Github, Galaxy, Fedora
 theme: gaia
 class:
  - invert
