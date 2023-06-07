@@ -18,7 +18,7 @@ _class:
 
 ## Automation is more important than ever before in software project management
 
-Being able to automate the low level, labor intensive parts of project management is critical. There are many tools in the Fedora and Github ecosystems that facilitate project management, such as GitHub Actions, Packit, and more. Learn how the Linux System Roles team leveraged these tools to perform:
+<!-- Being able to automate the low level, labor intensive parts of project management is critical. There are many tools in the Fedora and Github ecosystems that facilitate project management, such as GitHub Actions, Packit, and more. Learn how the Linux System Roles team leveraged these tools to perform: -->
 * Automated Ansible role release and publish to Ansible Galaxy
 * Automated Ansible collection build, publish and release to Galaxy
 * Automated Fedora RPM build and publish with Packit
