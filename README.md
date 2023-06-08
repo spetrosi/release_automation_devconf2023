@@ -29,8 +29,9 @@ For slies syntax examples use https://github.com/ralexander-phi/marp-to-pages/bl
 
 ## Automated GitHub Releases
 
-1. GitHub Action that we run manually when we need a new release
-2. GitHub Action that runs daily and releases new content if any of the repositories have updates
+1. A script that we run manually when we need a new release
+2. GitHub action that publishes content of each individual repo into an upstream hub
+3. Cron-like daily GitHub Action that collects and publishes content from multiple repositories if any repository has an update
 
 ## How We Use Conventional Commits
 
@@ -44,7 +45,7 @@ Format: `<type><!>: PR Title`
 
 *feat: Support custom data and logs storage paths*
 
-## Processing Conventional PR Titles
+## GitHub Action that Processes Conventional PR Titles
 
 <!-- We have a GitHub action that we run when we want to create a new release. This action does the following: -->
 1. Figure out the semantic version to use for the new tag
@@ -52,15 +53,19 @@ Format: `<type><!>: PR Title`
   1. `feat:` -> *New Features*
   2. `fix:` -> *Bug Fixes
   3. else -> *Other Changes*
-3. Pushes a new repository version and tag into GitHub
+3. Pushes a PR with the updated changelog and publishes a new version
+<!-- 3. Pushes a new repository version and tag into GitHub -->
 
-## Releasing Individual Roles
+## Releasing Individual Repositories
 
-Each repository has a GitHub action that watches for new releases, and when one occurs, publishes the role into Ansible Galaxy.
+GitHub action that publishes repository content to upstream hub once a new version on GitHub is released.
+<!-- In our case, publishes the role to Ansible Galaxy.
+It can also by PyPi etc. -->
 
-## Publishing Collections
+## Publishing Content of Multiple Repositories
 
-We have a cron-like GitHub action that runs daily and finds out if any of the role repositories has a new tag published.
-If yes, the action converts the roles to a collection format and publishes the resulting collection to Galaxy.
+A cron-like daily GitHub action that and converts multiple repositories into a collection and publishes to upstream Hub if any repository has a new version.
+
+<!-- In our case, multiple roles are built into a fedora.linux_system_roles collection and published to Galaxy -->
 
 ## Automated RPM Release with Packit
