@@ -170,8 +170,7 @@ actions:
 - [`copy_upstream_release_description`](https://packit.dev/docs/configuration/#copy_upstream_release_description)
   uses the GitHub release description.
 
-❌
-[Fedora packaging guidelines](https://docs.fedoraproject.org/en-US/packaging-guidelines/manual-changelog/):
+Contrary to [Fedora packaging guidelines](https://docs.fedoraproject.org/en-US/packaging-guidelines/manual-changelog/):
 "They must never simply contain an entire copy of the source CHANGELOG entries."
 
 Solution: custom changelog generator
