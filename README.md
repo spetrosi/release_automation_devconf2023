@@ -109,7 +109,7 @@ jobs:
 - spec file update (`Version`, `%changelog`)
 - Sources upload to lookaside
 - Pagure PR with updates
-- Koji update & Bodhi build after Pagure PR is merged
+- Koji build & Bodhi update after Pagure PR is merged
 
 ## Enabling Packit
 <style scoped>
