@@ -87,3 +87,79 @@ jobs:
 
 ## Automated RPM Release with Packit
 
+[Packit Service](https://packit.dev/docs/guide/) proposes Fedora releases from GitHub releases
+
+- triggered by GitHub release
+- spec file update (`Version`, `%changelog`)
+- Sources upload to lookaside
+- Pagure PR with updates
+- Koji update & Bodhi build after Pagure PR is merged
+
+## Enabling Packit
+<style scoped>
+{
+     font-size: 24px
+}
+</style>
+Upstream (GitHub repo): create `.packit.yaml`
+```yaml
+jobs:
+  - job: propose_downstream
+    trigger: release
+    dist_git_branches:
+      - fedora-all
+```
+Downstream (Fedora dist-git):  create `.packit.yaml`
+```yaml
+jobs:
+  - job: koji_build
+    trigger: commit
+    dist_git_branches:
+      - fedora-all
+  - job: bodhi_update
+    trigger: commit
+    dist_git_branches:
+      - fedora-branched # rawhide updates are created automatically
+```
+## Caveats (1)
+<style scoped>
+{
+     font-size: 24px
+}
+</style>
+
+### Where to maintain the spec file?
+If upstream, any Fedora changes will get overwritten.
+Solution:
+- keep spec file in Fedora
+- fetch it from there before creating the update
+```yaml
+actions:
+    post-upstream-clone:
+      - "wget https://src.fedoraproject.org/rpms/linux-system-roles/raw/rawhide/f/linux-system-roles.spec -O linux-system-roles.spec"
+
+```
+## Caveats (2)
+<style scoped>
+{
+     font-size: 24px
+}
+</style>
+
+### How about RPM %changelog?
+
+- by default, all Git commit message summaries in the upstream repo
+ used as the %changelog entry
+- [`copy_upstream_release_description`](https://packit.dev/docs/configuration/#copy_upstream_release_description)
+  uses the upstream release description.
+
+❌
+[Fedora packaging guidelines](https://docs.fedoraproject.org/en-US/packaging-guidelines/manual-changelog/):
+"They must never simply contain an entire copy of the source CHANGELOG entries."
+
+Solution: custom changelog generator
+```yaml
+actions:
+  changelog-entry:
+  - echo "- Rebase to version ${PACKIT_PROJECT_VERSION}"
+```
