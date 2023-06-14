@@ -40,8 +40,9 @@ For slies syntax examples use https://github.com/ralexander-phi/marp-to-pages/bl
     a. Identify a new semantic version
     b. Generate changelog using conventional commits
     c. Create a PR with updated changelog
-2. GitHub workflow that tags and releases GitHub repository once the changelog PR is merged
-3. GitHub workflow that publishes repository into an upstream hub for a new release
+2. Once the changelog PR is merged, a GitHub workflow triggers and does two tasks:
+    a. Tags and releases GitHub repository
+    b. Publishes repository content to Ansible Galaxy
 <!-- 3. Cron-like daily GitHub workflow that collects and publishes content from multiple repositories if any repository has an update -->
 
 ## Changelog Generation: Conventional Commits Format
