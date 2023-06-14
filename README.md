@@ -18,10 +18,12 @@ _class:
 
 ## Automation is more important than ever before in software project management
 
-<!-- Being able to automate the low level, labor intensive parts of project management is critical. There are many tools in the Fedora and Github ecosystems that facilitate project management, such as GitHub Actions, Packit, and more. Learn how the Linux System Roles team leveraged these tools to perform: -->
-* Automated Ansible role release and publish to Ansible Galaxy
-* Automated Ansible collection build, publish and release to Galaxy
-* Automated Fedora RPM build and publish with Packit
+<!-- Being able to automate the low level, labor intensive parts of project management is critical. There are many tools in the Fedora and Github ecosystems that facilitate project management, such as GitHub workflows, Packit, and more. -->
+
+Learn how the Linux System Roles(url) team leverages automation:
+1. Automated Ansible role release and publish to Ansible Galaxy
+<!-- 2. Automated Ansible collection build, publish and release to Galaxy -->
+2. Automated Fedora RPM build and publish with Packit
 <!--
 Comments for the slide for the presenters
 For slies syntax examples use https://github.com/ralexander-phi/marp-to-pages/blob/main/README.md and https://github.com/spetrosi/jak_psat_moderni_ucebnice/blob/dev/README.md
@@ -29,43 +31,59 @@ For slies syntax examples use https://github.com/ralexander-phi/marp-to-pages/bl
 
 ## Automated GitHub Releases
 
-1. A script that we run manually when we need a new release
-2. GitHub action that publishes content of each individual repo into an upstream hub
-3. Cron-like daily GitHub Action that collects and publishes content from multiple repositories if any repository has an update
+1. A script executed manually to create a new tag in GitHub repository
+    a. Identify a new semantic version
+    b. Generate changelog using conventional commits
+    c. Create a PR with updated changelog
+2. GitHub workflow that tags and releases GitHub repository once the changelog PR is merged
+3. GitHub workflow that publishes repository into an upstream hub for a new release
+<!-- 3. Cron-like daily GitHub workflow that collects and publishes content from multiple repositories if any repository has an update -->
 
-## How We Use Conventional Commits
+## Changelog Generation: Conventional Commits Format
 
 ![](img/semver.jpg)
 
-Format: `<type><!>: PR Title`
-
-* **!** - **MAJOR** bump
-* `feat` - **MINOR** bump
-* `fix`, `ci`, `test`, etc. - **PATCH** bump
-
+Format:
+`<type><!>: PR Title`
+Example:
 *feat: Support custom data and logs storage paths*
 
-## GitHub Action that Processes Conventional PR Titles
+## Figure out the new semantic version
 
-<!-- We have a GitHub action that we run when we want to create a new release. This action does the following: -->
-1. Figure out the semantic version to use for the new tag
-2. Build changelog based on PR types
-  1. `feat:` -> *New Features*
-  2. `fix:` -> *Bug Fixes
-  3. else -> *Other Changes*
-3. Pushes a PR with the updated changelog and publishes a new version
-<!-- 3. Pushes a new repository version and tag into GitHub -->
+- **!** - **MAJOR** bump
+- `feat` - **MINOR** bump
+- `fix`, `ci`, `test`,… - **PATCH** bump
 
-## Releasing Individual Repositories
+## Build changelog based on PR types
 
-GitHub action that publishes repository content to upstream hub once a new version on GitHub is released.
-<!-- In our case, publishes the role to Ansible Galaxy.
-It can also by PyPi etc. -->
+- `feat:` -> **New Features**
+- `fix:` -> **Bug Fixes**
+- else -> **Other Changes**
 
-## Publishing Content of Multiple Repositories
+## GitHub Release Process using Conventional PR Titles
 
-A cron-like daily GitHub action that and converts multiple repositories into a collection and publishes to upstream Hub if any repository has a new version.
+1. A developer runs the script
+2. This script collect merged PRs since last release
+3. Using conventional commits format, identifies version and generates a new changelog
+4. Pushes a PR with the updated changelog
 
-<!-- In our case, multiple roles are built into a fedora.linux_system_roles collection and published to Galaxy -->
+## Creating Releases
+
+PR merge triggers workflow that creates GitHub tag and release, and publishes repository content to Ansible Galaxy
+
+```yaml
+name: Tag, release, and publish role based on CHANGELOG.md push
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - CHANGELOG.md
+jobs:
+      - name: Create tag...
+      - name: Create Release...
+      - name: Publish role to Galaxy...
+```
 
 ## Automated RPM Release with Packit
+
