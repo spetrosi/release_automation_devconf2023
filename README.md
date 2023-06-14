@@ -145,7 +145,7 @@ jobs:
 </style>
 
 ### Where to maintain the spec file?
-If upstream, any Fedora changes will get overwritten.
+If in GitHub repo, any Fedora changes will get overwritten.
 Solution:
 - keep spec file in Fedora
 - fetch it from there before creating the update
@@ -164,10 +164,10 @@ actions:
 
 ### How about RPM %changelog?
 
-- by default, all Git commit message summaries in the upstream repo
+- by default, all Git commit message summaries in the GitHub repo
  used as the %changelog entry
 - [`copy_upstream_release_description`](https://packit.dev/docs/configuration/#copy_upstream_release_description)
-  uses the upstream release description.
+  uses the GitHub release description.
 
 ❌
 [Fedora packaging guidelines](https://docs.fedoraproject.org/en-US/packaging-guidelines/manual-changelog/):
