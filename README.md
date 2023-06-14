@@ -11,6 +11,11 @@ _class:
  - lead
  - invert
 -->
+<style>
+{
+  font-size: 30px
+}
+</style>
 
 # [Journey of Automation - Github, Galaxy, Fedora](https://spetrosi.github.io/release_automation_devconf2023)
 
@@ -54,11 +59,22 @@ Example:
 - `feat` - **MINOR** bump
 - `fix`, `ci`, `test`,… - **PATCH** bump
 
+For example:
+
+`feat: Add support for LVM RAID stripe size (#357)` - **MINOR** bump
+
+`feat!: User-specified mount point owner and permissions (#239)` - **MAJOR** bump
+
+`test: Add basic selinux_restore_dirs test` - **PATCH** bump
+
 ## Build changelog based on PR types
 
-- `feat:` -> **New Features**
-- `fix:` -> **Bug Fixes**
-- else -> **Other Changes**
+`feat:` -> **New Features**
+`fix:` -> **Bug Fixes**
+else -> **Other Changes**
+
+<!-- ![w:600 h:400](img/new_changelog.png) -->
+![bg right:60% contain](img/changelog.png)
 
 ## GitHub Release Process using Conventional PR Titles
 
