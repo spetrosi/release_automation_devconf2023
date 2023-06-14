@@ -106,10 +106,10 @@ jobs:
 [Packit Service](https://packit.dev/docs/guide/) proposes Fedora releases from GitHub releases
 
 - triggered by GitHub release
-- spec file update (`Version`, `%changelog`)
-- Sources upload to lookaside
-- Pagure PR with updates
-- Koji build & Bodhi update after Pagure PR is merged
+- updates spec file (`Version`, `%changelog`)
+- uploads Sources to lookaside
+- opens Pagure PR with updates
+- performs Koji build & Bodhi update after Pagure PR is merged
 
 ## Enabling Packit
 <style scoped>
