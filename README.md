@@ -155,7 +155,7 @@ Solution:
           - "wget https://src.fedoraproject.org/rpms/linux-system-roles/raw/rawhide/f/extrasources.inc -O extrasources.inc"
     ```
   - or, configure Packit in Fedora dist-git instead of in GitHub repo
-    - use `job: pull_from_downstream` instead of `job: propose_downstream`
+    - use `job: pull_from_upstream` instead of `job: propose_downstream`
 ## Caveats (2)
 <style scoped>
 {
