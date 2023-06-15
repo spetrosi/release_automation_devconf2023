@@ -207,7 +207,7 @@ Need: multiple Source: tags in spec, update them if any source tarball changes, 
 
 ## Conclusion
 
-This presentation is both a [website](https://spetrosi.github.io/release_automation_devconf2023) and a [README.md](https://github.com/spetrosi/release_automation_devconf2023/blob/main/README.md) deployed with [marp-to-pages](https://github.com/ralexander-phi/marp-to-pages) project.
+This presentation is both a [website](https://spetrosi.github.io/release_automation_devconf2023) and a [README.md](https://github.com/spetrosi/release_automation_devconf2023/blob/main/README.md) deployed with [marp-to-pages](https://github.com/ralexander-phi/marp-to-pages).
 
 # 🎉
 <!--
@@ -228,3 +228,5 @@ _class:
 [.packit.yaml in GitHub repo](https://github.com/linux-system-roles/auto-maintenance/blob/main/.packit.yaml)
 [.packit.yamlin Fedora dist-git](https://src.fedoraproject.org/rpms/linux-system-roles/blob/rawhide/f/.packit.yaml)
 [Example PR opened by Packit](https://src.fedoraproject.org/rpms/linux-system-roles/pull-request/222#)
+[Slides](https://spetrosi.github.io/release_automation_devconf2023)
+[marp-to-pages](https://github.com/ralexander-phi/marp-to-pages)
