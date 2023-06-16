@@ -107,6 +107,8 @@ jobs:
 - opens Pagure PR with updates
 - performs Koji build & Bodhi update after Pagure PR is merged
 
+See "Packit: RPM integration, all in one" on Sat 1:15 PM and Packit booth
+
 ## Enabling Packit
 <style scoped>
 {
@@ -121,6 +123,8 @@ jobs:
     dist_git_branches:
       - fedora-all
 ```
+Or configure `job: pull_from_upstream` in Fedora dist-git.
+
 Downstream (Fedora dist-git):  create [`.packit.yaml`](https://src.fedoraproject.org/rpms/linux-system-roles/blob/rawhide/f/.packit.yaml)
 ```yaml
 jobs:
