@@ -29,10 +29,6 @@ Learn how the [Linux System Roles](https://github.com/linux-system-roles/) team 
 1. Automated Ansible role release and publish to Ansible Galaxy
 <!-- 2. Automated Ansible collection build, publish and release to Galaxy -->
 2. Automated Fedora RPM build and publish with Packit
-<!--
-Comments for the slide for the presenters
-For slies syntax examples use https://github.com/ralexander-phi/marp-to-pages/blob/main/README.md and https://github.com/spetrosi/jak_psat_moderni_ucebnice/blob/dev/README.md
--->
 
 ## Automated GitHub Releases
 
@@ -230,7 +226,7 @@ _class:
 [Resulting CHANGELOG.md](https://github.com/linux-system-roles/network/blob/main/CHANGELOG.md)
 [Resulting GitHub releases](https://github.com/linux-system-roles/network/releases)
 [.packit.yaml in GitHub repo](https://github.com/linux-system-roles/auto-maintenance/blob/main/.packit.yaml)
-[.packit.yamlin Fedora dist-git](https://src.fedoraproject.org/rpms/linux-system-roles/blob/rawhide/f/.packit.yaml)
+[.packit.yaml in Fedora dist-git](https://src.fedoraproject.org/rpms/linux-system-roles/blob/rawhide/f/.packit.yaml)
 [Example PR opened by Packit](https://src.fedoraproject.org/rpms/linux-system-roles/pull-request/222#)
 [Slides](https://spetrosi.github.io/release_automation_devconf2023)
 [marp-to-pages](https://github.com/ralexander-phi/marp-to-pages)
